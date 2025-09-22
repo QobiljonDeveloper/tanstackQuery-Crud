@@ -56,7 +56,7 @@ export const usePhones = () => {
     },
     onSuccess: () => {
       message.success("Phone deleted successfully");
-      queryClient.invalidateQueries({ queryKey: ["phones"] });
+      client.invalidateQueries({ queryKey: ["phones"] });
     },
     onError: () => {
       message.error("Failed to delete phone");
