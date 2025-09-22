@@ -2,14 +2,14 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "../../api";
 import { message } from "antd";
 
-export interface Phone {
+export type Phone = {
   id: string;
   title: string;
-  price: string;
-  image?: string;
+  price: number;
+  image: string;
   memories: string[];
   isDelivery: boolean;
-}
+};
 
 export const usePhones = () => {
   const client = useQueryClient();

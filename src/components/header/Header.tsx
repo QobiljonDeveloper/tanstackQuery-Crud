@@ -91,16 +91,19 @@ const Header = ({
     try {
       setSubmitting(true);
 
-      const payload = {
+      const payload: Phone = {
         ...values,
+        price: Number(values.price),
         memories,
         image: values.image?.trim() || defaultImage,
+        id: selectedPhone?.id || "",
       };
 
       if (selectedPhone) {
         await updatePhone.mutateAsync({ ...selectedPhone, ...payload });
       } else {
-        await createPhone.mutateAsync(payload);
+        const { id, ...newPayload } = payload;
+        await createPhone.mutateAsync(newPayload);
       }
 
       setIsModalOpen(false);
