@@ -7,6 +7,7 @@ import {
   message,
   Tag,
   Space,
+  InputNumber,
 } from "antd";
 import { memo, useEffect, useState } from "react";
 import type { FormProps } from "antd";
@@ -18,7 +19,7 @@ const defaultImage =
 
 type FieldType = {
   title: string;
-  price: string;
+  price: number;
   image: string;
   memories: string[];
   isDelivery: boolean;
@@ -140,13 +141,17 @@ const Header = ({
               >
                 <Input placeholder="Enter Title" />
               </Form.Item>
-
               <Form.Item<FieldType>
                 label="Price"
                 name="price"
                 rules={[{ required: true, message: "Please enter Price" }]}
               >
-                <Input placeholder="Enter Price" />
+                <InputNumber
+                  className="w-full"
+                  placeholder="Enter Price"
+                  min={0}
+                  style={{ width: "100%" }}
+                />
               </Form.Item>
 
               <Form.Item<FieldType> label="Image" name="image">
