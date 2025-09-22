@@ -12,7 +12,7 @@ export interface Phone {
 }
 
 export const usePhones = () => {
-  const queryClient = useQueryClient();
+  const client = useQueryClient();
 
   const getPhones = useQuery<Phone[], any>({
     queryKey: ["phones"],
@@ -29,7 +29,7 @@ export const usePhones = () => {
     },
     onSuccess: () => {
       message.success("Phone created successfully");
-      queryClient.invalidateQueries({ queryKey: ["phones"] });
+      client.invalidateQueries({ queryKey: ["phones"] });
     },
     onError: () => {
       message.error("Failed to create phone");
@@ -43,7 +43,7 @@ export const usePhones = () => {
     },
     onSuccess: () => {
       message.success("Phone updated successfully");
-      queryClient.invalidateQueries({ queryKey: ["phones"] });
+      client.invalidateQueries({ queryKey: ["phones"] });
     },
     onError: () => {
       message.error("Failed to update phone");
